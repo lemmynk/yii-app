@@ -24,13 +24,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'status')->textInput() ?>
 
-    <?= $form->field($model, 'created_by')->textInput() ?>
 
-    <?= $form->field($model, 'created_on')->textInput() ?>
-
-    <?= $form->field($model, 'modify_by')->textInput() ?>
-
-    <?= $form->field($model, 'modify_on')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
