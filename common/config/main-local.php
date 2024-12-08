@@ -6,7 +6,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=osjjznke_cms',
             'username' => 'root',
-            'password' => 'enter',
+            'password' => '',
             'charset' => 'utf8',
         ],
         'mailer' => [

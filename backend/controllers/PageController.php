@@ -105,6 +105,7 @@ class PageController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $templates = Template::getTemplateOptions();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -112,6 +113,7 @@ class PageController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'templates' => $templates,
         ]);
     }
 
