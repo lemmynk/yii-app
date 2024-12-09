@@ -24,4 +24,5 @@ return [
     'extended_valid_elements' => 'strong/b,i[class], nav[id|class], table[style],table[class]',
     // elFinder file manager https://github.com/alexantr/yii2-elfinder
     'file_picker_callback' => alexantr\elfinder\TinyMCE::getFilePickerCallback(['elfinder/tinymce']),
+    'newline_behavior' => 'linebreak',
 ];
