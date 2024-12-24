@@ -28,8 +28,8 @@ AppAsset::register($this);
 
 
     <!-- Navbar -->
-    <header id="header" class="fixed-top">
-        <div class="container d-flex align-items-center">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
             <?= $this->render('_navigation', ['content' => !empty($this->context->params['navigation']) ? $this->context->params['navigation'] : '']) ?>
         </div>
     </header>
@@ -46,16 +46,16 @@ AppAsset::register($this);
         <section id="events" class="events">
             <div class="container aos-init aos-animate" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-md-8 align-items-stretch">
+                    <div class="container d-flex align-items-center">
                         <!-- Content Wrapper. Contains page content -->
                             <?= $this->render('_page_content', ['content' => $content]) ?>
                         <!-- /.content-wrapper -->
                     </div>
-                    <div class="col-md-4 d-flex align-items-stretch">
+                    <!--<div class="col-md-4 d-flex align-items-stretch">-->
                         <!-- Main Sidebar Container -->
-                        <?= $this->render('_sidebar', ['content' => $this->context->params['sidebar']]) ?>
+                        <?php //echo $this->render('_sidebar', ['content' => $this->context->params['sidebar']]) ?>
                         <!-- / .main sidebar -->
-                    </div>
+                    <!--</div>-->
                 </div>
             </div>
         </section>

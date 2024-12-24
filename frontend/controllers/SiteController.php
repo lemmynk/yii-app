@@ -94,6 +94,8 @@ class SiteController extends Controller
         $this->urls[4] = !empty($url5) ? $url5: '';
         $this->urls[5] = !empty($url6) ? $url6: '';
 
+        if ($this->urls[0] == null)
+            $this->urls[0] = 'pocetna';
         $this->page = Pages::findPageByUrl($this->urls[0]);
         $pageContent = $this->page->getPageContent($this->urls);
 

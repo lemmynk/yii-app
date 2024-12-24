@@ -25,4 +25,5 @@ return [
     // elFinder file manager https://github.com/alexantr/yii2-elfinder
     'file_picker_callback' => alexantr\elfinder\TinyMCE::getFilePickerCallback(['elfinder/tinymce']),
     'newline_behavior' => 'linebreak',
+    'forced_root_block' => "",
 ];

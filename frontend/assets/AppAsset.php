@@ -25,7 +25,7 @@ class AppAsset extends AssetBundle
         'vendor/purecounter/purecounter_vanilla.js',
         'vendor/aos/aos.js',
         'vendor/swiper/swiper-bundle.min.js',
-        'js/main.js',
+        'js/main-1.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
