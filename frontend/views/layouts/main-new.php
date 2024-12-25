@@ -16,6 +16,8 @@ AppAsset::register($this);
     <!DOCTYPE html>
     <html lang="<?= Yii::$app->language ?>" class="h-100">
     <head>
+        <link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/favicon-new.ico" type="image/x-icon" />
+
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <?php $this->registerCsrfMetaTags() ?>
@@ -28,8 +30,8 @@ AppAsset::register($this);
 
 
     <!-- Navbar -->
-    <header id="header" class="header d-flex align-items-center sticky-top">
-        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
             <?= $this->render('_navigation', ['content' => !empty($this->context->params['navigation']) ? $this->context->params['navigation'] : '']) ?>
         </div>
     </header>

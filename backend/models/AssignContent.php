@@ -81,6 +81,11 @@ class AssignContent extends MActiveRecord
         return $this->hasOne(Sector::class, ['id' => 'sector_id']);
     }
 
+    public function getPage()
+    {
+        return $this->hasOne(Pages::class, ['id' => 'page_id']);
+    }
+
     public function getOneContent($id)
     {
         $content = Content::findOne(['id' => $id]);

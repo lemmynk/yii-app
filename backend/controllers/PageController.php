@@ -65,7 +65,7 @@ class PageController extends Controller
         //$assigns = new ArrayDataProvider([
             //'allModels' => AssignContent::findAll(['page_id' => $id, 'deleted' => 0])]);
         $assigns = new ActiveDataProvider([
-            'query' => AssignContent::find()->where(['page_id' => $id, 'deleted' => 0]),
+            'query' => AssignContent::find()->where(['page_id' => $id])->andWhere(['deleted' => 0]),
         ]);
         //Myfunctions::echoArray($assigns);
 
@@ -126,7 +126,7 @@ class PageController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($id)->softDelete();
 
         return $this->redirect(['index']);
     }

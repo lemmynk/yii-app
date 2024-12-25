@@ -117,6 +117,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 }
                             ],
                             [
+                                'label' => 'Page',
+                                'value' => function($data){
+                                    return $data->page->name;
+                                }
+                            ],
+                            [
                                 'label' => 'Status',
                                 'value' => function($data){
                                     return $data->getStatusText($data->status);

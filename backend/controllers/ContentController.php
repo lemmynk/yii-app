@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\AssignContent;
 use Yii;
 use backend\models\Content;
 use yii\data\ActiveDataProvider;
@@ -38,7 +39,7 @@ class ContentController extends Controller
     {
         //Myfunctions::echoArray(Yii::$app->user->identity);
         $dataProvider = new ActiveDataProvider([
-            'query' => Content::find(),
+            'query' => Content::find()->where(['deleted' => 0]),
         ]);
 
         return $this->render('index', [
@@ -106,7 +107,12 @@ class ContentController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $assigns = AssignContent::find()->where(['content_id' => $id])->all();
+        //Myfunctions::echoArray($assigns);
+        foreach ($assigns as $assign){
+            $assign->softDelete();
+        }
+        $this->findModel($id)->softDelete();
 
         return $this->redirect(['index']);
     }
