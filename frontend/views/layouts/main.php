@@ -13,71 +13,65 @@ use yii\bootstrap4\NavBar;
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php $this->registerCsrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body class="d-flex flex-column h-100">
-<?php $this->beginBody() ?>
+    <!DOCTYPE html>
+    <html lang="<?= Yii::$app->language ?>" class="h-100">
+    <head>
+        <link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/favicon-new.ico" type="image/x-icon" />
 
-<header>
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav ml-auto'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-</header>
+        <meta charset="<?= Yii::$app->charset ?>">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <?php $this->registerCsrfMetaTags() ?>
+        <title><?= Html::encode($this->title) ?></title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        <?php $this->head() ?>
+    </head>
+    <body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+    <?php $this->beginBody() ?>
 
-<main role="main" class="flex-shrink-0">
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</main>
 
-<footer class="footer mt-auto py-3 text-muted">
-    <div class="container">
-        <p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+    <!-- Navbar -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+            <?= $this->render('_navigation', ['content' => !empty($this->context->params['navigation']) ? $this->context->params['navigation'] : '']) ?>
+        </div>
+    </header>
+    <!-- /.navbar -->
 
-<?php $this->endBody() ?>
-</body>
-</html>
+    <!-- Banner-->
+    <?= $this->render('_banner', ['content' => $this->context->params['banner']]) ?>
+    <!-- / .banner -->
+
+
+
+
+    <main id="main">
+        <section id="events" class="events">
+            <div class="container aos-init aos-animate" data-aos="fade-up">
+                <div class="row">
+                    <div class="container d-flex align-items-center">
+                        <!-- Content Wrapper. Contains page content -->
+                        <?= $this->render('_page_content', ['content' => $content]) ?>
+                        <!-- /.content-wrapper -->
+                    </div>
+                    <!--<div class="col-md-4 d-flex align-items-stretch">-->
+                    <!-- Main Sidebar Container -->
+                    <?php //echo $this->render('_sidebar', ['content' => $this->context->params['sidebar']]) ?>
+                    <!-- / .main sidebar -->
+                    <!--</div>-->
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Main Footer -->
+    <?= $this->render('_footer', ['content' => $this->context->params['footer']]) ?>
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+    <?php $this->endBody() ?>
+    </body>
+    </html>
 <?php $this->endPage();

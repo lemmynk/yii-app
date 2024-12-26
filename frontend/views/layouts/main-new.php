@@ -48,16 +48,16 @@ AppAsset::register($this);
         <section id="events" class="events">
             <div class="container aos-init aos-animate" data-aos="fade-up">
                 <div class="row">
-                    <div class="container d-flex align-items-center">
+                    <div class="col-lg-8 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <!-- Content Wrapper. Contains page content -->
                             <?= $this->render('_page_content', ['content' => $content]) ?>
                         <!-- /.content-wrapper -->
                     </div>
-                    <!--<div class="col-md-4 d-flex align-items-stretch">-->
+                    <div class="col-lg-4 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <!-- Main Sidebar Container -->
                         <?php //echo $this->render('_sidebar', ['content' => $this->context->params['sidebar']]) ?>
                         <!-- / .main sidebar -->
-                    <!--</div>-->
+                    </div>
                 </div>
             </div>
         </section>

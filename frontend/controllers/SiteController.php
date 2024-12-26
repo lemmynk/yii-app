@@ -29,7 +29,7 @@ class SiteController extends Controller
 {
     public $urls = [];
     public $page;
-    public $layout = 'main-new';
+    public $layout;
     public $params;
 
     /**
@@ -96,6 +96,11 @@ class SiteController extends Controller
 
         if ($this->urls[0] == null)
             $this->urls[0] = 'pocetna';
+        if ( ($this->urls[0] == null) || ( $this->urls[0] == 'pocetna')){
+            $this->layout = 'main';
+        } else{
+            $this->layout = 'main-new';
+        }
         $this->page = Pages::findPageByUrl($this->urls[0]);
         $pageContent = $this->page->getPageContent($this->urls);
 
