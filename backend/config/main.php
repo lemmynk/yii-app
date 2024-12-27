@@ -18,6 +18,9 @@ return [
         'menu' => [
             'class' => 'app\modules\menu\Menu',
         ],
+        'gallery' => [
+            'class' => 'app\modules\gallery\Gallery',
+        ],
     ],
     'components' => [
         'request' => [
