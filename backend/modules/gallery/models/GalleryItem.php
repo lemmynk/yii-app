@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\gallery\models;
+namespace backend\modules\gallery\models;
 
 use backend\components\MActiveRecord;
 use common\helpers\Myfunctions;

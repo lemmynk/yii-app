@@ -61,7 +61,7 @@ class SectorController extends Controller
     public function actionView($id)
     {
         $assigns = new ActiveDataProvider([
-            'query' => AssignContent::find()->where(['sector_id' => $id])->andWhere(['deleted' => 0]),
+            'query' => AssignContent::find()->where(['sector_id' => $id]),
         ]);
         return $this->render('view', [
             'model' => $this->findModel($id),

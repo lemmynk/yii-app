@@ -107,7 +107,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'label' => 'Content',
                                 'value' => function($data){
-                                    return $data->content->name;
+                                    if ($data->content_type == 'C'){
+                                        $ret = $data->content->name;
+                                    }else{
+                                        $ret = $data->widget->name;
+                                    }
+                                    return $ret;
                                 }
                             ],
                             [
@@ -116,12 +121,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return $data->getContentTypeText();
                                 }
                             ],
-                            [
-                                'label' => 'Page',
-                                'value' => function($data){
-                                    return $data->page->name;
-                                }
-                            ],
+                            //[
+                                //'label' => 'Page',
+                                //'value' => function($data){
+                                    //return $data->page->name;
+                                //}
+                            //],
                             [
                                 'label' => 'Status',
                                 'value' => function($data){

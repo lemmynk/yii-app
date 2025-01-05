@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
         'vendor/bootstrap-icons/bootstrap-icons.css',
         'vendor/boxicons/css/boxicons.min.css',
         'vendor/remixicon/remixicon.css',
+        'vendor/glightbox/css/glightbox.min.css',
         'vendor/swiper/swiper-bundle.min.css',
         'css/style.css',
         //'css/site.css',
@@ -26,6 +27,7 @@ class AppAsset extends AssetBundle
         'vendor/purecounter/purecounter_vanilla.js',
         'vendor/aos/aos.js',
         'vendor/bootstrap/js/bootstrap.bundle.min.js',
+        'vendor/glightbox/js/glightbox.min.js',
         'vendor/swiper/swiper-bundle.min.js',
         'js/main-1.js',
     ];

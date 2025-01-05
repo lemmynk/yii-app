@@ -147,6 +147,9 @@ class Widget extends MActiveRecord
         elseif ($model->type === self::SELF_TYPE_MENU){
             $ret = \frontend\widgets\navigationMenu\NavigationMenu::widget([]);
         }
+        elseif ($model->type === self::SELF_TYPE_GALLERY){
+            $ret = \frontend\widgets\gallery\Gallery::widget([]);
+        }
         return $ret;
     }
 
