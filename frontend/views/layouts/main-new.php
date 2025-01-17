@@ -38,13 +38,19 @@ AppAsset::register($this);
     <!-- /.navbar -->
 
     <!-- Banner-->
-        <?= $this->render('_banner', ['content' => $this->context->params['banner']]) ?>
+        <?php // echo $this->render('_banner', ['content' => $this->context->params['banner']]) ?>
     <!-- / .banner -->
 
 
 
 
     <main id="main">
+        <div class="breadcrumbs aos-init aos-animate" data-aos="fade-in">
+            <div class="container">
+                <h3>Центар за социјални рад са домским одељењем и дневним центром за смештај старих и пензионера</h3>
+                <h2>Нови Кнежевац</h2>
+            </div>
+        </div>
         <section id="events" class="events">
             <div class="container aos-init aos-animate" data-aos="fade-up">
                 <div class="row">

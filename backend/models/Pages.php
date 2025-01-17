@@ -113,4 +113,9 @@ class Pages extends MActiveRecord
         return $content;
 
     }
+
+    public static function getPagesForList()
+    {
+        return true;
+    }
 }
