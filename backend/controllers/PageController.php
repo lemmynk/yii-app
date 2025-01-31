@@ -13,6 +13,7 @@ use Yii;
 use backend\models\Pages;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -29,6 +30,13 @@ class PageController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    ['allow' => Yii::$app->user->identity->isAdmin()],
+                ],
+
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

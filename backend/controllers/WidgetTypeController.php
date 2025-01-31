@@ -6,6 +6,7 @@ use common\helpers\Myfunctions;
 use Yii;
 use backend\models\WidgetType;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,6 +22,13 @@ class WidgetTypeController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    ['allow' => Yii::$app->user->identity->isAdmin()],
+                ],
+
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

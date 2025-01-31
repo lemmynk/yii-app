@@ -11,6 +11,7 @@ use Yii;
 use backend\models\Sector;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -28,6 +29,13 @@ class SectorController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    ['allow' => Yii::$app->user->identity->isAdmin()],
+                ],
+
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

@@ -3,11 +3,35 @@
 namespace backend\controllers;
 
 use backend\models\AssignContent;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use YII;
 
 class AssignContentController extends \yii\web\Controller
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    ['allow' => Yii::$app->user->identity->isAdmin()],
+                ],
+
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');

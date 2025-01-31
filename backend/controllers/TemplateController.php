@@ -10,6 +10,7 @@ use Yii;
 use backend\models\Template;
 use yii\data\ActiveDataProvider;
 use yii\data\ArrayDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -25,6 +26,13 @@ class TemplateController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    ['allow' => Yii::$app->user->identity->isAdmin()],
+                ],
+
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
