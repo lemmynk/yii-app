@@ -1863,6 +1863,18 @@ section {
   padding: 0;
 }
 
+/*--------------------------------------------------------------
+# GListing Section
+--------------------------------------------------------------*/
 .list-view {
-  padding: 0 10% 0 10%;
+  padding: 0 15% 0 15%;
+}
+@media (max-width: 768px) {
+  .list-view {
+    padding: 0 0;
+  }
+}
+.listing-title{
+  text-align: center;
+  color: #5fcf80;
 }

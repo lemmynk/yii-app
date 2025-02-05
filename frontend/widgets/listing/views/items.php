@@ -8,6 +8,10 @@
 use yii\widgets\ListView;
 ?>
 <div class="container">
+    <div class="listing-title">
+        <h1>Дешавања</h1>
+    </div>
+
     <section class="events">
         <?php echo ListView::widget([
             'dataProvider' => $dataProvider,
