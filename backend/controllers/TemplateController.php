@@ -141,7 +141,7 @@ class TemplateController extends Controller
      */
     public function actionAddsector($id)
     {
-        $sectors = Sector::getSectorsOptions('T');
+        $sectors = Sector::getSectorsOptions();
         $model = new AssignSector();
 
         if ($model->load(Yii::$app->request->post())){
@@ -153,7 +153,8 @@ class TemplateController extends Controller
         }
         return $this->render('addsector', [
            'model' => $model,
-            'sectors' => $sectors
+            'sectors' => $sectors,
+            'tplId' => $id
         ]);
     }
 

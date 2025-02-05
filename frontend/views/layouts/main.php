@@ -48,7 +48,7 @@ AppAsset::register($this);
         <section id="events" class="events">
             <div class="container aos-init aos-animate" data-aos="fade-up">
                 <div class="row">
-                    <div class="container d-flex align-items-center">
+                    <div class="container">
                         <!-- Content Wrapper. Contains page content -->
                         <?php //echo $this->render('_page_content', ['content' => $content]) ?>
                         <?= $this->render('_page_content', ['content' => $this->context->params['page_content']]) ?>

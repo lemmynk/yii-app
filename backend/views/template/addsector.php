@@ -27,8 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <?= $form->field($model, 'sector_id')->dropdownList($sectors, ['prompt' => '']) ?>
 
-                        <?= $form->field($model, 'assign_type')->dropdownList(['T' => 'Template', 'P' => 'Page'], ['prompt' => '']) ?>
-
                         <?= $form->field($model, 'order_by')->textInput(['maxlength' => true]) ?>
 
                         <?= $form->field($model, 'status')->checkbox() ?>
@@ -39,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <div class="form-group">
                             <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Cancel', ['template/view', 'id' => $tplId], ['class' => 'btn btn-danger']) ?>
                         </div>
 
                         <?php ActiveForm::end(); ?>

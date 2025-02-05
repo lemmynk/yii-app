@@ -10,7 +10,6 @@ use Yii;
  *
  * @property int $id
  * @property string $lang_id
- * @property string $assign_type
  * @property int $page_id
  * @property int $sector_id
  * @property int $order_by
@@ -37,7 +36,7 @@ class AssignSector extends MActiveRecord
     public function rules()
     {
         return [
-            [['page_id', 'sector_id', 'order_by', 'assign_type', ], 'required'],
+            [['page_id', 'sector_id', 'order_by', ], 'required'],
             [['assign_type'], 'string'],
             [['page_id', 'sector_id', 'order_by', 'status'], 'integer'],
         ];
