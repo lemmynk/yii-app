@@ -14,7 +14,7 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'file_name')->textInput(['maxlength' => true]) ?>
+    <?php // echo $form->field($model, 'file_name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'sector_type')->dropDownList([ 'T' => 'Template', 'P' => 'Page', ], ['prompt' => '']) ?>
 

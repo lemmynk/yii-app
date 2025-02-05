@@ -99,19 +99,19 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                     'label' => 'Sector',
                                     'value' => function($data){
-                                        return $data->name;
+                                        return $data->sctr->name;
                                     }
                             ],
                             [
                                 'label' => 'Sector Type',
                                 'value' => function($data){
-                                    return $data->getSectorTypeText();
+                                    return $data->sctr->getSectorTypeText();
                                 }
                             ],
                             [
                                 'label' => 'Status',
                                 'value' => function($data){
-                                    return $data->getStatusText($data->status);
+                                    return $data->sctr->getStatusText($data->status);
                                 }
                             ],
                             [

@@ -47,8 +47,9 @@ AppAsset::register($this);
     <main id="main">
         <div class="breadcrumbs aos-init aos-animate" data-aos="fade-in">
             <div class="container">
-                <h3>Центар за социјални рад са домским одељењем и дневним центром за смештај старих и пензионера</h3>
-                <h2>Нови Кнежевац</h2>
+                <!--<h3>Центар за социјални рад са домским одељењем и дневним центром за смештај старих и пензионера</h3>
+                <h2>Нови Кнежевац</h2> -->
+                <?php echo $this->render('_breadcrumbs', ['content' => $this->context->params['breadcrumbs']]) ?>
             </div>
         </div>
         <section id="events" class="events">
@@ -56,7 +57,8 @@ AppAsset::register($this);
                 <div class="row">
                     <div class="col-lg-8 pt-4 pt-lg-0 order-2 order-lg-1 content">
                         <!-- Content Wrapper. Contains page content -->
-                            <?= $this->render('_page_content', ['content' => $content]) ?>
+                            <?php // echo $this->render('_page_content', ['content' => $content]) ?>
+                        <?= $this->render('_page_content', ['content' => $this->context->params['page_content']]) ?>
                         <!-- /.content-wrapper -->
                     </div>
                     <div class="col-lg-4 pt-4 pt-lg-0 order-2 order-lg-1 content">

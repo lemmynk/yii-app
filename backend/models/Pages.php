@@ -5,6 +5,7 @@ namespace backend\models;
 use Codeception\PHPUnit\Constraint\Page;
 use Yii;
 use backend\components\MActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -90,12 +91,13 @@ class Pages extends MActiveRecord
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function getPageContent($urls)
+    public static function getPageContent($urls, $id, $sectorId)
     {
         $models = AssignContent::find()->where([
             'status' => 1,
             'deleted' => 0,
-            'page_id' => $this->id,
+            'page_id' => $id,
+            'sector_id' => $sectorId
         ])->all();
 
         $content = '';
@@ -116,6 +118,20 @@ class Pages extends MActiveRecord
 
     public static function getPagesForList()
     {
-        return true;
+        $ret = [];
+        $pgs = [];
+        $pages = self::find()->where([
+            'deleted' => 0,
+            'status' => 1
+        ])->select(['url', 'name'])->asArray()->all();
+
+        //$pgs = ArrayHelper::map($pages, 'name', 'url');
+        foreach ($pages as $pg){
+            $ret['title'] = $pg['name'];
+            $ret['value'] = $pg['url'];
+            $pgs[] = $ret;
+            unset($ret);
+        } /**/
+        return $pgs;
     }
 }

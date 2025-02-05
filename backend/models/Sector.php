@@ -71,10 +71,10 @@ class Sector extends MActiveRecord
         } else return 'Page';
     }
 
-    public static function getSectorsOptions($type)
+    public static function getSectorsOptions()
     {
         $sectors = [];
-        $models = Sector::findAll(['sector_type' => $type, 'status' => 1, 'deleted' => 0]);
+        $models = Sector::findAll(['status' => 1, 'deleted' => 0]);
         foreach ( $models as $model){
             $sectors[$model->id] = $model->name;
         }

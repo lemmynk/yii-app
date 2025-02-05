@@ -96,24 +96,26 @@ class SiteController extends Controller
 
         if ($this->urls[0] == null)
             $this->urls[0] = 'pocetna';
-        if ( ($this->urls[0] == null) || ( $this->urls[0] == 'pocetna')){
+        /**if ( ($this->urls[0] == null) || ( $this->urls[0] == 'pocetna')){
             $this->layout = 'main';
         } else{
             $this->layout = 'main-new';
-        }
+        } **/
         $this->page = Pages::findPageByUrl($this->urls[0]);
-        $pageContent = $this->page->getPageContent($this->urls);
+        //$pageContent = $this->page->getPageContent($this->urls);
 
         //Myfunctions::echoArray(Widget::getWidgetContent('1'));
 
         $template = $this->page->template;
-        $templateContent = $template->getTemplateContent($this->urls);
+        $this->layout = $template->file_name;
+        //Myfunctions::echoArray($this->layout);
+        $templateContent = $template->getTemplateContent($this->urls, $this->page->id);
         foreach ($templateContent as $tC){
             $this->params[$tC['fileName']] = $tC['content'];
         }
 
         return $this->render('index', [
-            'pageContent' => $pageContent,
+            //'pageContent' => $pageContent,
             'pageTitle' => $this->page->title,
         ]);
     }

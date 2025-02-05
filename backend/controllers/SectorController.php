@@ -88,7 +88,9 @@ class SectorController extends Controller
         $templates = Template::getTemplateOptions();
         $filePath = Yii::getAlias('@frontend/views/layouts');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file_name = Myfunctions::parseForSEO($model->name);
+            $model->save();
             $fileName = $filePath . '/' . '_' . $model->file_name . '.php';
             fopen($fileName, 'x+');
             chmod($fileName, 0777);

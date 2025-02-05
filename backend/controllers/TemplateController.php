@@ -71,7 +71,7 @@ class TemplateController extends Controller
 
 
         $sectors = new ArrayDataProvider([
-            'allModels' => $model->sectors
+            'allModels' => AssignSector::find()->where(['page_id' => $id, 'deleted' => 0, 'status' => 1])->all()
         ]);
 
         return $this->render('view', [
@@ -90,6 +90,8 @@ class TemplateController extends Controller
         $model = new Template();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->file_name = Myfunctions::parseForSEO($model->name);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -144,7 +146,7 @@ class TemplateController extends Controller
 
         if ($model->load(Yii::$app->request->post())){
             $model->page_id = $id;
-            $model->assign_type = 'T';
+            //$model->assign_type = 'T';
             $model->save();
             return $this->redirect(['view', 'id' => $id]);
 

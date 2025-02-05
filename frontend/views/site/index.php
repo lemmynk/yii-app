@@ -5,5 +5,5 @@
 $this->title = $pageTitle;
 ?>
 
-<?= $pageContent?>
+<?php //echo $pageContent ?>
 

@@ -50,7 +50,8 @@ AppAsset::register($this);
                 <div class="row">
                     <div class="container d-flex align-items-center">
                         <!-- Content Wrapper. Contains page content -->
-                        <?= $this->render('_page_content', ['content' => $content]) ?>
+                        <?php //echo $this->render('_page_content', ['content' => $content]) ?>
+                        <?= $this->render('_page_content', ['content' => $this->context->params['page_content']]) ?>
                         <!-- /.content-wrapper -->
                     </div>
                     <!--<div class="col-md-4 d-flex align-items-stretch">-->

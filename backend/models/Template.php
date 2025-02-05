@@ -81,21 +81,36 @@ class Template extends MActiveRecord
         return $this->hasMany(Sector::class, ['tpl_id' => 'id']);
     }
 
-    public function getTemplateContent($urls)
+    public function getTemplateContent($urls, $id)
     {
-        //$sectors = [];
+        $ret = [];
         $contents = [];
+        $sectors = [];
         //$template = $this->getTemplate($id);
-        $sectors = Sector::find()->where([
+        $assignSectors = AssignSector::find()->where([
+            'deleted' => 0,
+            'status' => 1,
+            'page_id' => $this->id,
+        ])->all();
+
+        foreach ($assignSectors as $assignSector){
+            $sectors[] = Sector::findOne(['id' => $assignSector->sector_id]);
+        }
+        /**$sectors = Sector::find()->where([
             'deleted' => 0,
             'status' => 1,
             'tpl_id' => $this->id,
             'sector_type' => 'T',
-        ])->all();
+        ])->all(); **/
 
         foreach ($sectors as $sector){
+
+            if ($sector->sector_type == 'P'){
+                $contents['content'] = Pages::getPageContent($urls, $id, $sector->id);
+            }else{
+                $contents['content'] = $sector->getSectorContent($sector->id, $urls);
+            }
             $contents['fileName'] = $sector->file_name;
-            $contents['content'] = $sector->getSectorContent($sector->id, $urls);
 
             $ret[] = $contents;
             unset($contents);
