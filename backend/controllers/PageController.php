@@ -152,7 +152,7 @@ class PageController extends Controller
             'status' => 1,
             'deleted' => 0,
             'sector_type' => 'P',
-            'tpl_id' => $tpl->id
+            //'tpl_id' => $tpl->id
         ])->all();
 
         $secOptions = [];

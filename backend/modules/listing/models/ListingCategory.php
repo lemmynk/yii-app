@@ -12,6 +12,7 @@ use yii\helpers\ArrayHelper;
  * @property int $id
  * @property string|null $cat_title
  * @property string|null $cat_seo
+ * @property string|null $display_page
  * @property string|null $description
  * @property int $status
  * @property int $created_by
@@ -39,7 +40,7 @@ class ListingCategory extends MActiveRecord
             [['description'], 'string'],
             [['status', 'deleted'], 'integer'],
             [['created_on', 'modify_on', 'created_by', 'modify_by'], 'safe'],
-            [['cat_title', 'cat_seo'], 'string', 'max' => 100],
+            [['cat_title', 'cat_seo', 'display_page'], 'string', 'max' => 100],
             [['cat_title'], 'required'],
         ];
     }
@@ -53,6 +54,7 @@ class ListingCategory extends MActiveRecord
             'id' => 'ID',
             'cat_title' => 'Title',
             'cat_seo' => 'Cat Seo Name',
+            'display_page' => 'Page to display items',
             'description' => 'Description',
             'status' => 'Status',
             'created_by' => 'Created By',

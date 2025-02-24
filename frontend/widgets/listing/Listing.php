@@ -9,6 +9,7 @@
 namespace frontend\widgets\listing;
 
 
+use backend\modules\listing\models\ListingCategory;
 use backend\modules\listing\models\ListingItem;
 use common\helpers\Myfunctions;
 use yii\base\Widget;
@@ -34,17 +35,20 @@ class Listing extends Widget
         //Myfunctions::echoArray($this->urls);
         $baseUrl = Yii::$app->request->baseUrl;
         if ($this->urls[0] === ''){
-            $this->itemBaseUrl = $this->secondPageUrl . '/';
+            //$this->itemBaseUrl = $this->secondPageUrl . '/';
             $this->item = ListingItem::findItemBySeoLink($this->urls[0]);
         }elseif ($this->urls[0] !== ''){
-            $this->itemBaseUrl =  $this->urls[0] . '/';
+            //$this->itemBaseUrl =  $this->urls[0] . '/';
             $this->item = ListingItem::findItemBySeoLink($this->urls[1]);
         }elseif ($this->urls[1] !== ''){
-            $this->itemBaseUrl = $this->urls[0] . '/' . $this->urls[1] .'/';
+            //$this->itemBaseUrl = $this->urls[0] . '/' . $this->urls[1] .'/';
             $this->item = ListingItem::findItemBySeoLink($this->urls[1]);
         }
 
         $cat = $this->options['category'];
+        $displayPage = ListingCategory::findOne($cat)->display_page;
+
+        $this->itemBaseUrl = $displayPage. '/';
         $items = ListingItem::findItemsByCategory($cat);
 
 

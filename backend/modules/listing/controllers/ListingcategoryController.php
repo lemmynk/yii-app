@@ -2,6 +2,7 @@
 
 namespace app\modules\listing\controllers;
 
+use backend\models\Pages;
 use common\helpers\Myfunctions;
 use Yii;
 use backend\modules\listing\models\ListingCategory;
@@ -66,6 +67,7 @@ class ListingcategoryController extends Controller
     public function actionCreate()
     {
         $model = new ListingCategory();
+        $pages = Pages::getPagesOptions();
 
         if ($model->load(Yii::$app->request->post())) {
             $model->cat_seo = Myfunctions::parseForSEO($model->cat_title);
@@ -75,6 +77,7 @@ class ListingcategoryController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'pages' => $pages,
         ]);
     }
 
@@ -88,6 +91,7 @@ class ListingcategoryController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $pages = Pages::getPagesOptions();
 
         if ($model->load(Yii::$app->request->post())) {
             $model->cat_seo = Myfunctions::parseForSEO($model->cat_title);
@@ -97,6 +101,7 @@ class ListingcategoryController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'pages' => $pages,
         ]);
     }
 

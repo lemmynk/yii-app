@@ -134,4 +134,13 @@ class Pages extends MActiveRecord
         } /**/
         return $pgs;
     }
+
+    public static function getPagesOptions()
+    {
+        $pages = self::find()->where([
+            'deleted' => 0,
+            'status' => 1
+        ])->select(['url', 'name'])->asArray()->all();
+        return ArrayHelper::map($pages, 'url', 'name');
+    }
 }

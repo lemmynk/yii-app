@@ -134,7 +134,7 @@ class Myfunctions extends Controller
         return strtolower($new_name);
     }
 
-    public static function extractImgSrc($html)
+    public static function extractImgSrc($html, $all = null)
     {
         //$html = file_get_contents("you_file.html");
         $dom  = new \DOMDocument();
@@ -147,7 +147,11 @@ class Myfunctions extends Controller
         foreach ($dom->getElementsByTagName('img') as $image) {
             $images[] = $image->getAttribute('src');
         }
-        return $images[0];
+        if ($all !== null){
+            return $images;
+        }else{
+            return $images[0];
+        }
         //print_r( $images );
     }
 

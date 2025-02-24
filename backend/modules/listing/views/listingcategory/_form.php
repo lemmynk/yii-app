@@ -16,6 +16,8 @@ use yii\bootstrap4\ActiveForm;
 
     <?= $form->field($model, 'cat_seo')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'display_page')->dropdownList($pages, ['prompt' => 'Select page to display items']) ?>
+
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'status')->textInput() ?>

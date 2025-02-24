@@ -130,5 +130,11 @@ class ListingItem extends MActiveRecord
         $html_list = str_replace(['<img>', '</img>'], " " , $this->html_list);
         return strip_tags($html_list);
     }
+
+    public function removeImgTagsFromContent()
+    {
+        $html_content = str_replace(['<img>', '</img>'], " " , $this->html_content);
+        return strip_tags($html_content);
+    }
 }
 
