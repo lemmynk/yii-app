@@ -4,7 +4,7 @@ namespace app\modules\gallery\controllers;
 
 use common\helpers\Myfunctions;
 use Yii;
-use app\modules\gallery\models\Galleryitem;
+use backend\modules\gallery\models\GalleryItem;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -37,7 +37,7 @@ class GalleryitemController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Galleryitem::find(),
+            'query' => GalleryItem::find(),
         ]);
 
         return $this->render('index', [
